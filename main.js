@@ -18,7 +18,6 @@ function add() {
 	backgroundImgTag.src = background_image;
 
 	greenCarImgTag = new Image();
-	greenCarImgTag.
 	greenCarImgTag.onload = uploadgreencar;
 	greenCarImgTag.src = greencar_image;
 
