@@ -1,16 +1,14 @@
 //Create a reference for canvas 
-cnv = document.getElementById("myCanvas");
-ctx = cnv.getContext("2d");
-//Give specific height and width to the car image
+canvas = document.getElementById("myCanvas");
+ctx = canvas.getContext("2d");
 
 background_image = "parkingLot.jpg";
+//Set initials for a car image.
 greencar_image = "car2.png";
-greenCarHgt = 40;
-greenCarWdt = 40;
-//Set initial position for a car image.
-greenCarX = 10;
-greenCarY = 100;
-carNum = 1;
+greenCarHgt = 130;
+greenCarWdt = 100;
+greenCarX = 50;
+greenCarY = 175;
 function add() {
 	//upload car, and background images on the canvas.
 	backgroundImgTag = new Image();
@@ -20,23 +18,14 @@ function add() {
 	greenCarImgTag = new Image();
 	greenCarImgTag.onload = uploadgreencar;
 	greenCarImgTag.src = greencar_image;
-
-	carNum++;
-}
-function deleteCar() {
-	
 }
 function uploadBckgrnd() {
-	//Define function ‘uploadBackground’
-
+	ctx.drawImage(backgroundImgTag, 0, 0, canvas.width, canvas.height);
 }
-
 function uploadgreencar() {
 	//Define function ‘uploadgreencar’.
-
 	ctx.drawImage(greenCarImgTag, greenCarX, greenCarY, greenCarWdt, greenCarHgt);
 }
-
 
 window.addEventListener("keydown", my_keydown);
 
@@ -69,27 +58,31 @@ function up() {
 	if (greenCarY > 0) {
 		greenCarY -= 10;
 		console.log("When up arrow is pressed, X = " + greenCarX + " and Y = " + greenCarY);
-		add();
+		uploadBckgrnd();
+		uploadgreencar();
 	}
 }
 function down() {
-	if (greenCarY < 110) {
+	if (greenCarY < 320) {
 		greenCarY += 10;
 		console.log("When down arrow is pressed, X = " + greenCarX + " and Y = " + greenCarY);
-		add();
+		uploadBckgrnd();
+		uploadgreencar();
 	}
 }
 function left() {
 	if (greenCarX > 0) {
 		greenCarX -= 10;
-		console.log("When left arrow is pressed, X = " + greenCarX + " and Y = " + greenCarY);
-		add();
+		console.log("When left arrow is pressed, X = " + (greenCarX + 10) + " and Y = " + greenCarY);
+		uploadBckgrnd();
+		uploadgreencar();
 	}
 }
 function right() {
-	if (greenCarX < 260) {
+	if (greenCarX < 800) {
 		greenCarX += 10;
-		console.log("When left arrow is pressed, X = " + greenCarX + " and Y = " + greenCarY);
-		add();
+		console.log("When right arrow is pressed, X = " + greenCarX + " and Y = " + greenCarY);
+		uploadBckgrnd();
+		uploadgreencar();
 	}
 }
